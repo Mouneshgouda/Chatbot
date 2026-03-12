@@ -105,6 +105,45 @@ https://skemato.com/nn-playground/
 
 <img width="2183" height="1389" alt="image" src="https://github.com/user-attachments/assets/7d1fdd6d-8b3a-4217-ac1f-5e9f240fc451" />
 
+```python
+
+from agno.agent import Agent
+from agno.models.ollama import Ollama
+
+model = Ollama("llama3.2:1b")
+
+agent = Agent(
+    name="Diet Plan",
+    model=model,
+     instructions="""
+You are a Personal diet coach.
+
+Rules:
+1. help me to make diet plan
+2.whenever u see diet then  only response otherwise say:
+plese say:it's not a diet plan.
+"""
+)
+
+print("🐍 Python Interview Agent")
+print("Type 'exit' to quit")
+print("=" * 50)
+
+while True:
+    user_input = input("\nYou: ").strip()
+
+    if user_input.lower() == "exit":
+        print("Goodbye 👋")
+        break
+
+    response = agent.run(user_input)
+
+    print("\n🤖 Agent:")
+    print(response.content)
+    print("=" * 50)
+
+```
+
 
 ### step20
 
