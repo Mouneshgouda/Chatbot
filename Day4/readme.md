@@ -117,6 +117,10 @@ https://skemato.com/nn-playground/
 
 ## Step 19 – Python Agent Code
 
+
+<img width="2183" height="1389" alt="image" src="https://github.com/user-attachments/assets/adc0e98c-2b06-49fe-b0e3-e1cee8a11676" />
+
+
 ```python
 from agno.agent import Agent
 from agno.models.ollama import Ollama
