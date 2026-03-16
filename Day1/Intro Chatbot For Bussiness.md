@@ -6,6 +6,8 @@ https://medium.com/@mouneshpatil001/what-is-conversational-ai-8fb546be64cd
 
 ### Text TO speech
 
+<img width="1024" height="820" alt="image" src="https://github.com/user-attachments/assets/5f29e466-32fd-4594-89ee-b99fb7d2700a" />
+
 
 ```python
 pip install gtts
@@ -22,6 +24,9 @@ Audio("output.mp3", autoplay=True)
 ```
 ## Text To Translate
 
+<img width="592" height="249" alt="image" src="https://github.com/user-attachments/assets/4716c6da-da7f-4661-8e8e-51f941748394" />
+
+
 ```python
 !pip install googletrans==4.0.0-rc1 #google translation
 ```
@@ -37,6 +42,9 @@ print(tran.text)
 ```
 
 ## Text To Image
+
+<img width="550" height="1131" alt="image" src="https://github.com/user-attachments/assets/c26f58db-7b6b-4a00-a58e-d12b0b3b490e" />
+
 
 ```python
 
@@ -55,6 +63,9 @@ generator.to("cuda")
 !pip install pytesseract #for google lens like ocr
 ```
 ### image TO Text
+
+<img width="1238" height="1434" alt="image" src="https://github.com/user-attachments/assets/5f14fb9b-7c17-4f06-b72b-e741d0439e25" />
+
 
 ```python
 from PIL import Image
