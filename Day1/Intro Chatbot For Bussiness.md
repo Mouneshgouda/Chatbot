@@ -35,4 +35,17 @@ tran = tran.translate(text_to_translate,src='auto',dest='ka') #en
 print(tran.text)
 ```
 
+## Text To Image
+
+```
+
+from transformers import pipeline
+import torch
+from diffusers import DiffusionPipeline
+
+# Load the image generation pipeline using diffusers
+generator = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
+generator.to("cuda")
+
+```
 
