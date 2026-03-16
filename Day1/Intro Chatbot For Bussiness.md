@@ -58,6 +58,12 @@ generator.to("cuda")
 
 ```
 
+```python
+# Generate an image from the text prompt
+prompt = "A beautiful landscape with mountains and a lake"
+image = generator(prompt).images[0]
+```
+
 
 ```python
 !pip install pytesseract #for google lens like ocr
