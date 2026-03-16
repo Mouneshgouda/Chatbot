@@ -37,6 +37,8 @@ print(tran.text)
 
 ## Text To Image
 
+
+
 ```python
 
 from transformers import pipeline
