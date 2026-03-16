@@ -37,15 +37,31 @@ print(tran.text)
 
 ## Text To Image
 
-```
+```python
 
 from transformers import pipeline
 import torch
 from diffusers import DiffusionPipeline
 
 # Load the image generation pipeline using diffusers
-generator = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
+generator = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-
 generator.to("cuda")
+
+```
+
+
+```python
+!pip install pytesseract #for google lens like ocr
+```
+### image TO Text
+
+```python
+from PIL import Image
+import pytesseract
+img = Image.open('/content/Gemini_Generated_Image_2f6ckc2f6ckc2f6c.png')
+text = pytesseract.image_to_string(img)
+print(text)
+```
 
 ```
 
