@@ -65,13 +65,14 @@ image = generator(prompt).images[0]
 ```
 
 
-```python
-!pip install pytesseract #for google lens like ocr
-```
+
 ### image TO Text
 
 <img width="1238" height="1434" alt="image" src="https://github.com/user-attachments/assets/5f14fb9b-7c17-4f06-b72b-e741d0439e25" />
 
+```python
+!pip install pytesseract #for google lens like ocr
+```
 
 ```python
 from PIL import Image
