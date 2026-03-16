@@ -15,16 +15,17 @@ Audio("output.mp3", autoplay=True)
 ```
 
 ```python
-!pip install pytesseract #for google lens like ocr
-```
+!pip install googletrans==4.0.0-rc1 #google translation```
 ### image TO Text
 
 ```python
-from PIL import Image
-import pytesseract
-img = Image.open('/content/Gemini_Generated_Image_2f6ckc2f6ckc2f6c.png')
-text = pytesseract.image_to_string(img)
-print(text)
+#translation service googletrans
+from googletrans import Translator
+tran = Translator()
+# Assign a sample text for translation to avoid the error
+text_to_translate = "Hello, how are you?"
+tran = tran.translate(text_to_translate,src='auto',dest='ka') #en
+print(tran.text)
 ```
 
 
