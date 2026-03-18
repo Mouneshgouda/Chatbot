@@ -82,7 +82,7 @@ demo.launch(share=True)
 
 ```
 
-##
+## Bussiness ChatBot Using RAG Model
 
 ```python
 # Install dependencies (run once)
