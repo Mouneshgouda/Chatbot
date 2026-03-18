@@ -1,4 +1,4 @@
-## Dummy Chatbot
+# Dummy Chatbot
 <img width="1400" height="926" alt="image" src="https://github.com/user-attachments/assets/8531fea3-7965-462f-98b6-ab96593f24cf" />
 
 
@@ -24,7 +24,7 @@ while True:
     print("Bot:", response[0]["generated_text"])
 ```
 
-## Simple Chatbot Using Gemini API KEY
+# Simple Chatbot Using Gemini API KEY
 <img width="1400" height="787" alt="image" src="https://github.com/user-attachments/assets/2d8320c0-d7d6-44ad-a818-aed36c095191" />
 
 
@@ -47,9 +47,9 @@ while True:
 
 ```
 
-## Simple Chatbot Using Gemini Api Key And Gradio Ui
+# Simple Chatbot Using Gemini Api Key And Gradio Ui
 
-![Uploading image.png…]()
+<img width="1632" height="918" alt="image" src="https://github.com/user-attachments/assets/6b8e6585-27f6-4cf2-a486-ed3c5f5d01f0" />
 
 
 ```python
