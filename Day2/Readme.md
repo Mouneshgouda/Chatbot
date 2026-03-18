@@ -1,4 +1,6 @@
 ## Dummy Chatbot
+<img width="1400" height="926" alt="image" src="https://github.com/user-attachments/assets/8531fea3-7965-462f-98b6-ab96593f24cf" />
+
 
 ```python
 from transformers import pipeline
@@ -23,6 +25,8 @@ while True:
 ```
 
 ## Simple Chatbot Using Gemini API KEY
+<img width="1400" height="787" alt="image" src="https://github.com/user-attachments/assets/2d8320c0-d7d6-44ad-a818-aed36c095191" />
+
 
 ```python
 
@@ -41,6 +45,39 @@ while True:
     response = model.invoke(user_input)
     print("Model:", response.content + "\n")
 
+```
 
+## Simple Chatbot Using Gemini Api Key And Gradio Ui
+
+![Uploading image.png…]()
+
+
+```python
+
+import os
+import getpass
+import gradio as gr
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+# Set API Key (Colab safe input)
+if not os.environ.get("GOOGLE_API_KEY"):
+    os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter Google Gemini API Key: ")
+
+# Initialize Gemini model
+model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+
+# Chat function
+def chat_with_gemini(message, history):
+    response = model.invoke(message)
+    return response.content
+
+# Create Gradio interface
+demo = gr.ChatInterface(
+    fn=chat_with_gemini,
+    title="Gemini Chatbot",
+    description="Chat with Google Gemini using LangChain + Gradio"
+)
+
+demo.launch(share=True)
 
 ```
