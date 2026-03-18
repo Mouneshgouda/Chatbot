@@ -81,3 +81,27 @@ demo = gr.ChatInterface(
 demo.launch(share=True)
 
 ```
+
+##
+
+```python
+# Install dependencies (run once)
+!pip install --upgrade google-generativeai pandas
+
+import pandas as pd
+import google.generativeai as genai
+from getpass import getpass
+
+api_key = getpass("Enter your Google API Key: ")
+
+genai.configure(api_key=api_key)
+model = genai.GenerativeModel("gemini-2.5-flash")
+
+csv_path = "/content/business_data.csv"
+df = pd.read_csv(csv_path)
+
+context_text = ""
+for _, row in df.iterrows():
+    context_text += f"Q: {row['question']}\nA: {row['answer']}\n\n"
+
+```
