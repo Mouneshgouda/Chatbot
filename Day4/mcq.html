@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Machine Learning Fundamentals Quiz</title>
+
+<style>
+body{
+font-family: Arial;
+margin:40px;
+background: linear-gradient(to right,#eef2f7,#d9e4f5);
+}
+
+h1{
+text-align:center;
+}
+
+.timer{
+text-align:center;
+font-size:20px;
+font-weight:bold;
+color:red;
+margin-bottom:20px;
+}
+
+.question{
+background:white;
+padding:15px;
+margin-bottom:15px;
+border-radius:8px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.correct{
+background:#d4edda;
+}
+
+.wrong{
+background:#f8d7da;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+background:#0078D4;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+#result{
+font-size:22px;
+text-align:center;
+margin-top:20px;
+}
+
+.pass{color:green;}
+.fail{color:red;}
+</style>
+
+</head>
+<body>
+
+<h1>MCQ Quiz: Machine Learning Fundamentals</h1>
+
+<div class="timer">
+Time Left: <span id="time">10:00</span>
+</div>
+
+<form id="quizForm">
+
+<!-- QUESTIONS -->
+
+<div class="question" id="q1box">
+<p>1. Machine Learning is a subset of?</p>
+<input type="radio" name="q1" value="A"> A. Artificial Intelligence<br>
+<input type="radio" name="q1" value="B"> B. Networking<br>
+<input type="radio" name="q1" value="C"> C. Operating System<br>
+<input type="radio" name="q1" value="D"> D. Databases<br>
+</div>
+
+<div class="question" id="q2box">
+<p>2. Supervised learning uses?</p>
+<input type="radio" name="q2" value="A"> A. Unlabeled data<br>
+<input type="radio" name="q2" value="B"> B. Labeled data<br>
+<input type="radio" name="q2" value="C"> C. Random data<br>
+<input type="radio" name="q2" value="D"> D. Audio data<br>
+</div>
+
+<div class="question" id="q3box">
+<p>3. Which is an example of supervised learning?</p>
+<input type="radio" name="q3" value="A"> A. Classification<br>
+<input type="radio" name="q3" value="B"> B. Clustering<br>
+<input type="radio" name="q3" value="C"> C. Dimensionality reduction<br>
+<input type="radio" name="q3" value="D"> D. Sampling<br>
+</div>
+
+<div class="question" id="q4box">
+<p>4. Unsupervised learning works with?</p>
+<input type="radio" name="q4" value="A"> A. Labeled data<br>
+<input type="radio" name="q4" value="B"> B. Structured labels<br>
+<input type="radio" name="q4" value="C"> C. Unlabeled data<br>
+<input type="radio" name="q4" value="D"> D. Manual labels<br>
+</div>
+
+<div class="question" id="q5box">
+<p>5. Which algorithm is used for clustering?</p>
+<input type="radio" name="q5" value="A"> A. K-Means<br>
+<input type="radio" name="q5" value="B"> B. Linear Regression<br>
+<input type="radio" name="q5" value="C"> C. Logistic Regression<br>
+<input type="radio" name="q5" value="D"> D. Decision Tree<br>
+</div>
+
+<div class="question" id="q6box">
+<p>6. Reinforcement learning is based on?</p>
+<input type="radio" name="q6" value="A"> A. Rewards and penalties<br>
+<input type="radio" name="q6" value="B"> B. Labeled dataset<br>
+<input type="radio" name="q6" value="C"> C. Static models<br>
+<input type="radio" name="q6" value="D"> D. Databases<br>
+</div>
+
+<div class="question" id="q7box">
+<p>7. In reinforcement learning, the learner is called?</p>
+<input type="radio" name="q7" value="A"> A. Agent<br>
+<input type="radio" name="q7" value="B"> B. Node<br>
+<input type="radio" name="q7" value="C"> C. Table<br>
+<input type="radio" name="q7" value="D"> D. Layer<br>
+</div>
+
+<div class="question" id="q8box">
+<p>8. Confusion Matrix is used to evaluate?</p>
+<input type="radio" name="q8" value="A"> A. Classification models<br>
+<input type="radio" name="q8" value="B"> B. Sorting algorithms<br>
+<input type="radio" name="q8" value="C"> C. File systems<br>
+<input type="radio" name="q8" value="D"> D. Hardware speed<br>
+</div>
+
+<div class="question" id="q9box">
+<p>9. Accuracy measures?</p>
+<input type="radio" name="q9" value="A"> A. Correct predictions over total predictions<br>
+<input type="radio" name="q9" value="B"> B. Training time<br>
+<input type="radio" name="q9" value="C"> C. Data size<br>
+<input type="radio" name="q9" value="D"> D. Model complexity<br>
+</div>
+
+<div class="question" id="q10box">
+<p>10. Precision measures?</p>
+<input type="radio" name="q10" value="A"> A. Correct positive predictions<br>
+<input type="radio" name="q10" value="B"> B. Total negatives<br>
+<input type="radio" name="q10" value="C"> C. Model speed<br>
+<input type="radio" name="q10" value="D"> D. Data normalization<br>
+</div>
+
+<div class="question" id="q11box">
+<p>11. Recall measures?</p>
+<input type="radio" name="q11" value="A"> A. True positives detected<br>
+<input type="radio" name="q11" value="B"> B. Total predictions<br>
+<input type="radio" name="q11" value="C"> C. CPU usage<br>
+<input type="radio" name="q11" value="D"> D. Dataset size<br>
+</div>
+
+<div class="question" id="q12box">
+<p>12. F1 Score is?</p>
+<input type="radio" name="q12" value="A"> A. Harmonic mean of precision and recall<br>
+<input type="radio" name="q12" value="B"> B. Average of features<br>
+<input type="radio" name="q12" value="C"> C. Dataset accuracy<br>
+<input type="radio" name="q12" value="D"> D. Gradient value<br>
+</div>
+
+<div class="question" id="q13box">
+<p>13. Which is NOT supervised learning?</p>
+<input type="radio" name="q13" value="A"> A. Clustering<br>
+<input type="radio" name="q13" value="B"> B. Classification<br>
+<input type="radio" name="q13" value="C"> C. Regression<br>
+<input type="radio" name="q13" value="D"> D. Prediction<br>
+</div>
+
+<div class="question" id="q14box">
+<p>14. True Positive means?</p>
+<input type="radio" name="q14" value="A"> A. Correct positive prediction<br>
+<input type="radio" name="q14" value="B"> B. Incorrect positive prediction<br>
+<input type="radio" name="q14" value="C"> C. Correct negative prediction<br>
+<input type="radio" name="q14" value="D"> D. Incorrect negative prediction<br>
+</div>
+
+<div class="question" id="q15box">
+<p>15. False Positive means?</p>
+<input type="radio" name="q15" value="A"> A. Incorrect positive prediction<br>
+<input type="radio" name="q15" value="B"> B. Correct positive prediction<br>
+<input type="radio" name="q15" value="C"> C. Correct negative prediction<br>
+<input type="radio" name="q15" value="D"> D. True negative<br>
+</div>
+
+<br>
+<button type="submit">Submit Quiz</button>
+
+</form>
+
+<div id="result"></div>
+
+<script>
+
+let timeLeft=600;
+
+let timer=setInterval(function(){
+
+let minutes=Math.floor(timeLeft/60);
+let seconds=timeLeft%60;
+
+document.getElementById("time").innerText=
+(minutes<10?"0":"")+minutes+":"+(seconds<10?"0":"")+seconds;
+
+timeLeft--;
+
+if(timeLeft<0){
+clearInterval(timer);
+submitQuiz();
+alert("Time up! Quiz auto submitted");
+}
+
+},1000);
+
+const correctAnswers={
+q1:"A",
+q2:"B",
+q3:"A",
+q4:"C",
+q5:"A",
+q6:"A",
+q7:"A",
+q8:"A",
+q9:"A",
+q10:"A",
+q11:"A",
+q12:"A",
+q13:"A",
+q14:"A",
+q15:"A"
+};
+
+document.getElementById("quizForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+submitQuiz();
+
+});
+
+function submitQuiz(){
+
+clearInterval(timer);
+
+let score=0;
+
+for(let i=1;i<=15;i++){
+
+let key="q"+i;
+
+let selected=document.querySelector(`input[name="${key}"]:checked`);
+
+let box=document.getElementById(key+"box");
+
+if(selected){
+
+if(selected.value===correctAnswers[key]){
+score++;
+box.classList.add("correct");
+}
+
+else{
+box.classList.add("wrong");
+}
+
+}
+
+else{
+box.classList.add("wrong");
+}
+
+}
+
+let percentage=(score/15)*100;
+
+let grade=percentage>=50?"PASS":"FAIL";
+
+let gradeClass=percentage>=50?"pass":"fail";
+
+document.getElementById("result").innerHTML=
+"Score: "+score+" / 15<br>"+
+"Percentage: "+percentage.toFixed(2)+"%<br>"+
+"<span class='"+gradeClass+"'>Result: "+grade+"</span>";
+
+}
+
+</script>
+
+</body>
+</html>
