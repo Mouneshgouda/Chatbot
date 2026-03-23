@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Vision Pro</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#050816;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+/* animated gradient */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 20% 20%, #0f2027, transparent),
+radial-gradient(circle at 80% 40%, #203a43, transparent),
+radial-gradient(circle at 40% 80%, #2c5364, transparent);
+z-index:-3;
+}
+
+/* neural canvas */
+
+#bgCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+}
+
+/* AI card */
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:18px;
+box-shadow:0 0 40px rgba(0,255,255,0.2);
+text-align:center;
+}
+
+h1{
+margin-top:0;
+font-size:34px;
+letter-spacing:1px;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:linear-gradient(45deg,#00fff2,#00c6ff);
+color:black;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+canvas{
+margin-top:20px;
+max-width:100%;
+border-radius:10px;
+}
+
+#status{
+margin-top:15px;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<div class="container">
+
+<div class="card">
+
+<h1>AI Object Detection</h1>
+
+<p>Upload an image and AI will detect objects</p>
+
+<input type="file" id="upload">
+
+<br>
+
+<button onclick="detect()">Run Detection</button>
+
+<br>
+
+<canvas id="canvas"></canvas>
+
+<div id="status"></div>
+
+</div>
+
+</div>
+
+<script>
+
+/* NEURAL NETWORK BACKGROUND */
+
+const bg=document.getElementById("bgCanvas")
+const ctx=bg.getContext("2d")
+
+bg.width=window.innerWidth
+bg.height=window.innerHeight
+
+let particles=[]
+
+for(let i=0;i<80;i++){
+
+particles.push({
+x:Math.random()*bg.width,
+y:Math.random()*bg.height,
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
+})
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,bg.width,bg.height)
+
+particles.forEach(p=>{
+
+p.x+=p.vx
+p.y+=p.vy
+
+if(p.x<0||p.x>bg.width) p.vx*=-1
+if(p.y<0||p.y>bg.height) p.vy*=-1
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fillStyle="#00ffff"
+ctx.fill()
+
+particles.forEach(p2=>{
+
+let dx=p.x-p2.x
+let dy=p.y-p2.y
+let dist=Math.sqrt(dx*dx+dy*dy)
+
+if(dist<120){
+
+ctx.beginPath()
+ctx.moveTo(p.x,p.y)
+ctx.lineTo(p2.x,p2.y)
+ctx.strokeStyle="rgba(0,255,255,0.15)"
+ctx.stroke()
+
+}
+
+})
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+/* AI MODEL */
+
+let model
+let img=new Image()
+
+async function loadModel(){
+
+model=await cocoSsd.load()
+
+status.innerHTML="AI Model Ready ✔"
+
+}
+
+loadModel()
+
+upload.onchange=e=>{
+
+let reader=new FileReader()
+
+reader.onload=function(){
+
+img.src=reader.result
+img.onload=draw
+
+}
+
+reader.readAsDataURL(e.target.files[0])
+
+}
+
+function draw(){
+
+let canvas=document.getElementById("canvas")
+let ctx=canvas.getContext("2d")
+
+let maxWidth=800
+let scale=maxWidth/img.width
+
+canvas.width=maxWidth
+canvas.height=img.height*scale
+
+ctx.drawImage(img,0,0,canvas.width,canvas.height)
+
+}
+
+async function detect(){
+
+status.innerHTML="AI scanning image..."
+
+const predictions=await model.detect(img)
+
+let canvas=document.getElementById("canvas")
+let ctx=canvas.getContext("2d")
+
+draw()
+
+let scale=canvas.width/img.width
+
+predictions.forEach(p=>{
+
+ctx.strokeStyle="#00ffff"
+ctx.lineWidth=3
+
+ctx.strokeRect(
+p.bbox[0]*scale,
+p.bbox[1]*scale,
+p.bbox[2]*scale,
+p.bbox[3]*scale
+)
+
+ctx.fillStyle="#00ffff"
+ctx.font="16px Arial"
+
+ctx.fillText(
+p.class+" "+Math.round(p.score*100)+"%",
+p.bbox[0]*scale,
+p.bbox[1]*scale-5
+)
+
+})
+
+status.innerHTML="Detected Objects: "+predictions.length
+
+}
+
+</script>
+
+</body>
+</html>
