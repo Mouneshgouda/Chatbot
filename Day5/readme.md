@@ -97,11 +97,72 @@ https://skemato.com/nn-playground/
 
 ---
 
+## Step 16
 
+![Step16](https://github.com/user-attachments/assets/58c1eae2-d941-4418-8270-88adff98fd58)
 
 ---
 
+## Step 17
 
+![Step17](https://github.com/user-attachments/assets/a1cb6188-306c-4e6f-a550-2ac8e67bc5a1)
+
+---
+
+## Step 18
+
+![Step18](https://github.com/user-attachments/assets/d9366004-aa18-46d8-a989-8c6979cb0757)
+
+---
+
+## Step 19 – Python Agent Code
+
+
+<img width="2183" height="1389" alt="image" src="https://github.com/user-attachments/assets/adc0e98c-2b06-49fe-b0e3-e1cee8a11676" />
+
+
+```python
+from agno.agent import Agent
+from agno.models.ollama import Ollama
+
+model = Ollama("llama3.2:1b")
+
+agent = Agent(
+    name="Diet Plan",
+    model=model,
+    instructions="""
+You are a Personal diet coach.
+
+Rules:
+1. help me to make diet plan
+2. whenever you see diet then only respond
+otherwise say: please say: it's not a diet plan.
+"""
+)
+
+print("🐍 Python Interview Agent")
+print("Type 'exit' to quit")
+print("=" * 50)
+
+while True:
+    user_input = input("\nYou: ").strip()
+
+    if user_input.lower() == "exit":
+        print("Goodbye 👋")
+        break
+
+    response = agent.run(user_input)
+
+    print("\n🤖 Agent:")
+    print(response.content)
+    print("=" * 50)
+```
+
+---
+
+## Step 20 – Output / Result
+
+![Step20](https://github.com/user-attachments/assets/3507b018-9c17-4944-bb25-96e2dfe137fa)
 
 ---
 
